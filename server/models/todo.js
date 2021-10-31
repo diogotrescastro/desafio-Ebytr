@@ -3,11 +3,11 @@ const getConnection = require('./connection');
 
 const COLLECTION = 'lista-de-tarefas';
 
-const create = async () => {
+const create = async (document) => {
   try {
     const db = await getConnection();
     const newTodo = await db.collection(COLLECTION)
-    .insertOne({});
+    .insertOne(document);
     return newTodo;
   } catch (error) {
     return error.message;
@@ -24,22 +24,24 @@ const getAll = async () => {
   }
 };
 
-const update = async () => {
+const update = async (document) => {
   try {
+    const id = document._id;
     const db = await getConnection();
     const todoUpdated = db.collection(COLLECTION)
-    .updateOne({ _id: ObjectId(id) }, { $set: { ...updateRecipe } });
+    .updateOne({ _id: ObjectId(id) }, { $set: tarefa });
     return todoUpdated;
   } catch (error) {
+    console.log(error.message);
     return error.message;
   }
 };
 
-const del = async (id) => {
+const del = async (document) => {
   try {
     const db = await getConnection();
     await db.collection(COLLECTION)
-    .deleteOne({ _id: ObjectId(id) });
+    .deleteOne({ _id: ObjectId(document._id) });
   } catch (error) {
     return error.message;
   }

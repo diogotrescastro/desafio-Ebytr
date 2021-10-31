@@ -1,7 +1,7 @@
 const todoModel = require('../models/todo');
 
-const create = async () => {
-  const newTodo = await todoModel.create();
+const create = async (document) => {
+  const newTodo = await todoModel.create(document);
 
  return newTodo;
 };
@@ -13,14 +13,14 @@ const getAll = async () => {
 };
 
 
-const update = async (id, updateRecipe) => {
-  const todo = await todoModel.update();
+const update = async (document) => {
+  const todo = await todoModel.update(document);
 
  return todo;
 };
 
-const del = async (id) => {
-  const todo = await todoModel.del();
+const del = async (document) => {
+  const todo = await todoModel.del(document);
 
  return todo;
 };
