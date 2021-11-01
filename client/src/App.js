@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { getTodos, addTodo } from './services/todoAPI';
+import { getTodos, addTodo, updateTodo, deleteTodo } from './services/todoAPI';
 import Task from './components/task';
 
 function App() {
@@ -12,8 +12,16 @@ function App() {
     });
   }
 
-  function addNewTodo() {
-    addTodo().then(setTodosFromAPI())
+  function addNewTodo(todo) {
+    addTodo().then(() => setTodosFromAPI())
+  }
+
+  function updatedTodo(todo) {
+    updateTodo(todo, setTodosFromAPI).then(console.log("foi"))
+  }
+
+  function deletedTodo(todo) {
+    deleteTodo(todo , setTodosFromAPI).then(console.log("foi del"))
   }
 
   useEffect(() => {
@@ -32,12 +40,14 @@ function App() {
        {todos.map((todo) => {
          return (
            <Task
-              task = {todo} />
+              key={todo._id}
+              task = {todo}
+              updated = {updatedTodo}
+              deleted = {deletedTodo}
+              />
          )
        })}
        <div className="newtodo">
-          <input type="text" placeholder="Nova Tarefa" />
-          <input type="text" placeholder="Descrição" />
           <button onClick={addNewTodo}>Adicionar</button>
        </div>
     </div>

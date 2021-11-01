@@ -27,9 +27,10 @@ const getAll = async () => {
 const update = async (document) => {
   try {
     const id = document._id;
+    const {title, active, edit} = document;
     const db = await getConnection();
-    const todoUpdated = db.collection(COLLECTION)
-    .updateOne({ _id: ObjectId(id) }, { $set: tarefa });
+    const todoUpdated = await db.collection(COLLECTION)
+    .updateOne({ _id: ObjectId(id) }, { $set: {title, active, edit} });
     return todoUpdated;
   } catch (error) {
     console.log(error.message);
@@ -39,9 +40,11 @@ const update = async (document) => {
 
 const del = async (document) => {
   try {
+    console.log(document);
     const db = await getConnection();
     await db.collection(COLLECTION)
     .deleteOne({ _id: ObjectId(document._id) });
+    return true;
   } catch (error) {
     return error.message;
   }
