@@ -1,10 +1,12 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { getTodos, addTodo, updateTodo, deleteTodo } from './services/todoAPI';
-import Task from './components/task';
+import { getTodos} from './services/todoAPI';
+import Form from './components/Form'
+import Task from './components/Task'
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [filtereds, setFiltereds] = useState(null);
 
   function setTodosFromAPI() {
     getTodos().then(todos => {
@@ -12,44 +14,45 @@ function App() {
     });
   }
 
-  function addNewTodo(todo) {
-    addTodo().then(() => setTodosFromAPI())
-  }
-
-  function updatedTodo(todo) {
-    updateTodo(todo, setTodosFromAPI).then(console.log("foi"))
-  }
-
-  function deletedTodo(todo) {
-    deleteTodo(todo , setTodosFromAPI).then(console.log("foi del"))
-  }
-
   useEffect(() => {
     setTodosFromAPI();
   }, []);
+
+  function filterTodos(type) {
+    if (type === 'all') {
+      return todos
+    }
+    return setFiltereds(todos.filter(todo => todo.status === type));
+  }
+  const todoList = filtereds ? filtereds : todos; 
+
+  
 
   return (
     <div className="App">
        <h1> Lista de Tarefas </h1>
        <div className="filters">
-         <button>Todas Tarefas</button>
-         <button>Pendentes</button>
-         <button>Em Andamento</button>
-         <button>Prontas</button>
+         <button onClick={() => filterTodos('all')}>Todas Tarefas</button>
+         <button onClick={() => filterTodos('pending')}>Pendentes</button>
+         <button onClick={() => filterTodos('progress')}>Em Andamento</button>
+         <button onClick={() => filterTodos('completed')}>Prontas</button>
        </div>
-       {todos.map((todo) => {
+       {todoList.map((todo) => {
+         console.log(todo._id.toString())
          return (
            <Task
-              key={todo._id}
+              key={todo._id.toString()}
               task = {todo}
-              updated = {updatedTodo}
-              deleted = {deletedTodo}
+              getTodos = {setTodosFromAPI}
               />
          )
        })}
-       <div className="newtodo">
-          <button onClick={addNewTodo}>Adicionar</button>
-       </div>
+       <br/>
+       <br/>
+       <br/>
+        <Form 
+        getTodos= {setTodosFromAPI}
+        />  
     </div>
   );
 }

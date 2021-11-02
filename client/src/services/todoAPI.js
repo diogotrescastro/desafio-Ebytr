@@ -5,15 +5,15 @@ export async function getTodos() {
 }
 
 
-export  async function addTodo(todo) {
+export  async function addTodo(todo, setTodosFromAPI) {
   return fetch(`http://localhost:3000/todo/add`, {
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
-    body: JSON.stringify({"title": "", "active": "true"})
+    body: JSON.stringify(todo)
   })
     .then((result) => result.json())
-    .then((data) => true)
-    .catch((err) => console.error("Error: ", err));;
+    .then(() => setTodosFromAPI())
+    .catch((err) => console.error("Error: ", err));
 }
 
 export async function updateTodo(todo, setTodosFromAPI) {

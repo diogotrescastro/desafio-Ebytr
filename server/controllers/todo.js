@@ -21,6 +21,7 @@ const getAll = async (_req, res) => {
 
 const update = async (req, res) => {
   try {
+    console.log(req.body);
     const document = req.body;
     const todoUpdated = await todoService.update(document);
     return res.status(200).json(todoUpdated);

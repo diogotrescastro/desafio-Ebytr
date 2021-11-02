@@ -27,10 +27,10 @@ const getAll = async () => {
 const update = async (document) => {
   try {
     const id = document._id;
-    const {title, active, edit} = document;
+    const {title, status, edit} = document;
     const db = await getConnection();
     const todoUpdated = await db.collection(COLLECTION)
-    .updateOne({ _id: ObjectId(id) }, { $set: {title, active, edit} });
+    .updateOne({ _id: ObjectId(id) }, { $set: {title, status, edit} });
     return todoUpdated;
   } catch (error) {
     console.log(error.message);
