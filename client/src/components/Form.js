@@ -8,6 +8,7 @@ const initialTask = {
 }
 function Task({ getTodos }) {
   const [newTask, setNewTask] = useState(initialTask);
+  const [validateInput, setvalidateInput] = useState(false);
 
 
   function onChange(e) {
@@ -17,6 +18,10 @@ function Task({ getTodos }) {
 
   function onSubmit(e) {
     e.preventDefault();
+    if(newTask.title === "") {
+      setvalidateInput(true);
+      return;
+    }
     addTodo(newTask, getTodos);
     setNewTask(initialTask);
   }
@@ -43,6 +48,8 @@ function Task({ getTodos }) {
           <option value="completed">Concluída</option>
         </select>
         <button type="submit">Criar</button>
+        {validateInput && newTask.title === ""? <span className="empty-title">O campo não pode ser vazio</span> : ''} 
+
       </form>
   )}
 

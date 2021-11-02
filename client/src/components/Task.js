@@ -4,6 +4,8 @@ import { updateTodo, deleteTodo } from '../services/todoAPI';
 
 function Task({ task, key, getTodos }) {
   const [editTask, setEditTask] = useState(task);
+  const [validateInput, setvalidateInput] = useState(false);
+
 
   function handleEdit() {
     const tempItem = { ...task, status: editTask.status, edit: true };
@@ -23,6 +25,10 @@ function Task({ task, key, getTodos }) {
   function onSubmit(e) {
     const tempItem = { ...editTask, edit: false };
     e.preventDefault();
+    if(editTask.title === "") {
+      setvalidateInput(true);
+      return;
+    }
     updateTodo(tempItem, getTodos);
   }
 
@@ -48,6 +54,8 @@ function Task({ task, key, getTodos }) {
         </select>
         <button onClick={handleDelete}>x</button>
         <button type="submit">Atualizar</button>
+        {validateInput && editTask.title === ""? <span className="empty-title">O campo não pode ser vazio</span> : ''} 
+
       </form>
     );
   }

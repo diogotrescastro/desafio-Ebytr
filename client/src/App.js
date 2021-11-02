@@ -25,8 +25,10 @@ function App() {
     return setFiltereds(todos.filter(todo => todo.status === type));
   }
   const todoList = filtereds ? filtereds : todos; 
-
   
+  useEffect(() => {
+    
+  }, [todos]);
 
   return (
     <div className="App">
