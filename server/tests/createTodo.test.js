@@ -43,11 +43,13 @@ describe("POST /todo/add", () => {
       expect(response.body).to.be.a("object");
     });
 
-    it('o objeto possui as propriedades "_id, title, status, edit"', () => {
-      expect(response.body).to.have.property("_id");
-      expect(response.body).to.have.property("title");
-      expect(response.body).to.have.property("status");
-      expect(response.body).to.have.property("edit");
+    it('o objeto possui as propriedades "message"', () => {
+      expect(response.body).to.have.property("message");
+    });
+    it('a propriedade "message" possui o texto "Tarefa criada com sucesso"', () => {
+      expect(response.body.message).to.be.equal(
+        "Tarefa criada com sucesso"
+      );
     });
   });
   describe("Quando uma tarefa é criada sem sucesso", () => {

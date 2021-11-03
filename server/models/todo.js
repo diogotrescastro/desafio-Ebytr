@@ -10,7 +10,7 @@ const create = async (document) => {
     .insertOne(document);
     const { insertedId } = newTodo;
     const { status, title, edit} = document;
-    return { _id: insertedId,title, status, edit };
+    return { message: 'Tarefa criada com sucesso'};
   } catch (error) {
     return error.message;
   }
