@@ -35,7 +35,7 @@ const update = async (document) => {
     const db = await getConnection();
     const todoUpdated = await db.collection(COLLECTION)
     .updateOne({ _id: ObjectId(id) }, { $set: {title, status, edit} });
-    return todoUpdated;
+    return document;
   } catch (error) {
     return error.message;
   }
