@@ -13,6 +13,7 @@ const schemaWithID = Joi.object().keys({
   status: Joi.string().required(),
   edit: Joi.boolean().required(),
   _id: Joi.objectId().required(),
+  date: Joi.date().required(),
 });
 
 const validate = async (req, res, next) => {

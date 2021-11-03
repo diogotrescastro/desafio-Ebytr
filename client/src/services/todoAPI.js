@@ -4,7 +4,6 @@ export async function getTodos() {
     .then((data) => data);
 }
 
-
 export  async function addTodo(todo, setTodosFromAPI) {
   return fetch(`http://localhost:3000/todo/add`, {
     headers: { 'Content-Type': 'application/json' },

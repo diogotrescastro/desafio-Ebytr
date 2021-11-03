@@ -1,14 +1,16 @@
 const { ObjectId } = require('mongodb');
 const getConnection = require('./connection');
 
-const COLLECTION = 'lista-de-tarefas';
+const COLLECTION = 'lista';
 
 const create = async (document) => {
   try {
+    const {title, status, edit} = document;
+    const date = new Date()
     const db = await getConnection();
-    const newTodo = await db.collection(COLLECTION)
-    .insertOne(document);
-    return newTodo;
+    await db.collection(COLLECTION)
+    .insertOne({title, status, edit, date});
+    return { message: 'Tarefa criada com sucesso'};
   } catch (error) {
     return error.message;
   }
@@ -29,9 +31,9 @@ const update = async (document) => {
     const id = document._id;
     const {title, status, edit} = document;
     const db = await getConnection();
-    const todoUpdated = await db.collection(COLLECTION)
+    await db.collection(COLLECTION)
     .updateOne({ _id: ObjectId(id) }, { $set: {title, status, edit} });
-    return todoUpdated;
+    return { message: 'Tarefa criada com sucesso'};
   } catch (error) {
     return error.message;
   }
@@ -42,7 +44,7 @@ const del = async (document) => {
     const db = await getConnection();
     await db.collection(COLLECTION)
     .deleteOne({ _id: ObjectId(document._id) });
-    return true;
+    return { message: 'Tarefa deletada com sucesso'};
   } catch (error) {
     return error.message;
   }
