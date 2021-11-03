@@ -8,8 +8,6 @@ const create = async (document) => {
     const db = await getConnection();
     const newTodo = await db.collection(COLLECTION)
     .insertOne(document);
-    const { insertedId } = newTodo;
-    const { status, title, edit} = document;
     return { message: 'Tarefa criada com sucesso'};
   } catch (error) {
     return error.message;
@@ -33,7 +31,7 @@ const update = async (document) => {
     const db = await getConnection();
     const todoUpdated = await db.collection(COLLECTION)
     .updateOne({ _id: ObjectId(id) }, { $set: {title, status, edit} });
-    return document;
+    return { message: 'Tarefa atualizada com sucesso'};
   } catch (error) {
     return error.message;
   }
