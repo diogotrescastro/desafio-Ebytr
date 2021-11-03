@@ -12,6 +12,18 @@ const getAll = async () => {
  return todos;
 };
 
+const getAllSortedByRecents  = async () => {
+  const todos = await todoModel.getAll();
+
+ return todos;
+};
+
+const getAllSortedByOlds  = async () => {
+  const todos = await todoModel.getAll();
+
+ return todos;
+};
+
 
 const update = async (document) => {
   const todo = await todoModel.update(document);
@@ -29,6 +41,8 @@ const del = async (document) => {
 module.exports = {
   create,
   getAll,
+  getAllSortedByRecents,
+  getAllSortedByOlds,
   update,
   del,
 };
