@@ -5,10 +5,14 @@ const COLLECTION = 'lista-de-tarefas';
 
 const create = async (document) => {
   try {
+    console.log(document);
     const db = await getConnection();
     const newTodo = await db.collection(COLLECTION)
     .insertOne(document);
-    return newTodo;
+    console.log(newTodo)
+    const { insertedId } = newTodo;
+    const { status, title, edit} = document;
+    return { insertedId,title, status, edit };
   } catch (error) {
     return error.message;
   }
@@ -40,9 +44,9 @@ const update = async (document) => {
 const del = async (document) => {
   try {
     const db = await getConnection();
-    await db.collection(COLLECTION)
+    const todoDeleted = await db.collection(COLLECTION)
     .deleteOne({ _id: ObjectId(document._id) });
-    return true;
+    return todoDeleted;
   } catch (error) {
     return error.message;
   }
