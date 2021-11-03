@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const todoController = require('../controllers/todo')
+const { validate, validateWithID } = require('../middlewares/validations')
 
-router.post('/add',todoController.create);
+router.post('/add',validate, todoController.create);
 router.get('/list', todoController.getAll);
-router.put('/update', todoController.update);
-router.delete('/delete', todoController.del);
+router.put('/update',validateWithID, todoController.update);
+router.delete('/delete',validateWithID, todoController.del);
 
 module.exports = router; 
