@@ -19,6 +19,15 @@ const getAll = async (_req, res) => {
   }
 };
 
+const getAllSortedByDate  = async (_req, res) => {
+  try {
+    const todos = await todoService.getAll();
+    return res.status(200).json(todos);
+  } catch (error) {
+    return res.status(400).json({ err: error.message });
+  }
+};
+
 const update = async (req, res) => {
   try {
     const document = req.body;
@@ -42,6 +51,7 @@ const del = async (req, res) => {
 module.exports = {
   create,
   getAll,
+  getAllSortedByDate,
   update,
   del
 }; 

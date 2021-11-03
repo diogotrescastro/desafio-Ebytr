@@ -5,6 +5,7 @@ const { validate, validateWithID } = require('../middlewares/validations')
 
 router.post('/add',validate, todoController.create);
 router.get('/list', todoController.getAll);
+router.get('/list/sortedbydate', todoController.getAllSortedByDate);
 router.put('/update',validateWithID, todoController.update);
 router.delete('/delete',validateWithID, todoController.del);
 
