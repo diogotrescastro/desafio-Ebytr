@@ -20,7 +20,7 @@ const getAllSortedByRecents  = async () => {
 
 
 const getAllSortedByAz = async () => {
-  const todos = await todoModel.getAllSortedByRecents();
+  const todos = await todoModel.getAllSortedByAz();
 
  return todos;
 };
