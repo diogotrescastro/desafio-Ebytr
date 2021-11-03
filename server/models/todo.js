@@ -61,9 +61,9 @@ const update = async (document) => {
     const id = document._id;
     const {title, status, edit} = document;
     const db = await getConnection();
-    const todoUpdated = await db.collection(COLLECTION)
+    await db.collection(COLLECTION)
     .updateOne({ _id: ObjectId(id) }, { $set: {title, status, edit} });
-    return { message: 'Tarefa atualizada com sucesso'};
+    return { message: 'Tarefa criada com sucesso'};
   } catch (error) {
     return error.message;
   }
@@ -72,9 +72,9 @@ const update = async (document) => {
 const del = async (document) => {
   try {
     const db = await getConnection();
-    const todoDeleted = await db.collection(COLLECTION)
+    await db.collection(COLLECTION)
     .deleteOne({ _id: ObjectId(document._id) });
-    return todoDeleted;
+    return { message: 'Tarefa deletada com sucesso'};
   } catch (error) {
     return error.message;
   }
