@@ -1,14 +1,14 @@
 const { ObjectId } = require('mongodb');
 const getConnection = require('./connection');
 
-const COLLECTION = 'lista-de-tarefas';
+const COLLECTION = 'lista';
 
 const create = async (document) => {
   try {
     const {title, status, edit} = document;
     const date = new Date()
     const db = await getConnection();
-    const newTodo = await db.collection(COLLECTION)
+    await db.collection(COLLECTION)
     .insertOne({title, status, edit, date});
     return { message: 'Tarefa criada com sucesso'};
   } catch (error) {

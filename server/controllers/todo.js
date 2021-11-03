@@ -21,16 +21,7 @@ const getAll = async (_req, res) => {
 
 const getAllSortedByRecents  = async (_req, res) => {
   try {
-    const todos = await todoService.getAll();
-    return res.status(200).json(todos);
-  } catch (error) {
-    return res.status(400).json({ err: error.message });
-  }
-};
-
-const getAllSortedByOlds  = async (_req, res) => {
-  try {
-    const todos = await todoService.getAll();
+    const todos = await todoService.getAllSortedByRecents();
     return res.status(200).json(todos);
   } catch (error) {
     return res.status(400).json({ err: error.message });
@@ -39,7 +30,7 @@ const getAllSortedByOlds  = async (_req, res) => {
 
 const getAllSortedByAz = async (_req, res) => {
   try {
-    const todos = await todoService.getAll();
+    const todos = await todoService.getAllSortedByAz();
     return res.status(200).json(todos);
   } catch (error) {
     return res.status(400).json({ err: error.message });
@@ -48,7 +39,7 @@ const getAllSortedByAz = async (_req, res) => {
 
 const getAllSortedByZa = async (_req, res) => {
   try {
-    const todos = await todoService.getAll();
+    const todos = await todoService.getAllSortedByZa();
     return res.status(200).json(todos);
   } catch (error) {
     return res.status(400).json({ err: error.message });
@@ -79,7 +70,6 @@ module.exports = {
   create,
   getAll,
   getAllSortedByRecents,
-  getAllSortedByOlds,
   getAllSortedByAz,
   getAllSortedByZa,
   update,
