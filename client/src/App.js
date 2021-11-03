@@ -6,11 +6,12 @@ import Task from './components/Task'
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [filtereds, setFiltereds] = useState(null);
+  const [filter, setFilter] = useState();
 
   function setTodosFromAPI() {
     getTodos().then(todos => {
       setTodos(todos);
+      
     });
   }
 
@@ -18,35 +19,27 @@ function App() {
     setTodosFromAPI();
   }, []);
 
-  function filterTodos(type) {
-    if (type === 'all') {
-      return todos
-    }
-    return setFiltereds(todos.filter(todo => todo.status === type));
-  }
-  const todoList = filtereds ? filtereds : todos; 
-  
-  useEffect(() => {
-    
-  }, [todos]);
+  const filteredTodos = filter? todos.filter(todo => todo.status === filter) : todos;
+
+
 
   return (
     <div className="App">
        <h1> Lista de Tarefas </h1>
        <div className="filters">
-         <button onClick={() => filterTodos('all')}>Todas Tarefas</button>
-         <button onClick={() => filterTodos('pending')}>Pendentes</button>
-         <button onClick={() => filterTodos('progress')}>Em Andamento</button>
-         <button onClick={() => filterTodos('completed')}>Prontas</button>
+         <button onClick={() => setFilter()}>Todas Tarefas</button>
+         <button onClick={() => setFilter('pending')}>Pendentes</button>
+         <button onClick={() => setFilter('progress')}>Em Andamento</button>
+         <button onClick={() => setFilter('completed')}>Prontas</button>
        </div>
-       {todoList.map((todo) => {
-         console.log(todo._id.toString())
+       {filteredTodos.map((todo) => {
          return (
+           <div key={todo._id}>
            <Task
-              key={todo._id.toString()}
               task = {todo}
               getTodos = {setTodosFromAPI}
               />
+              </div>
          )
        })}
        <br/>

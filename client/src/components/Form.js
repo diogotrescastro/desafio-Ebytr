@@ -4,7 +4,8 @@ import { addTodo } from '../services/todoAPI';
 
 const initialTask = {
   title: "",
-  status: "pending"
+  status: "pending",
+  edit: false
 }
 function Task({ getTodos }) {
   const [newTask, setNewTask] = useState(initialTask);
@@ -22,6 +23,7 @@ function Task({ getTodos }) {
       setvalidateInput(true);
       return;
     }
+    console.log(newTask);
     addTodo(newTask, getTodos);
     setNewTask(initialTask);
   }

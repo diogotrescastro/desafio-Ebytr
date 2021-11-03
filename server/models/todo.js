@@ -33,14 +33,12 @@ const update = async (document) => {
     .updateOne({ _id: ObjectId(id) }, { $set: {title, status, edit} });
     return todoUpdated;
   } catch (error) {
-    console.log(error.message);
     return error.message;
   }
 };
 
 const del = async (document) => {
   try {
-    console.log(document);
     const db = await getConnection();
     await db.collection(COLLECTION)
     .deleteOne({ _id: ObjectId(document._id) });
