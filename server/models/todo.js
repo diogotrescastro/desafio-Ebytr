@@ -26,36 +26,6 @@ const getAll = async () => {
   }
 };
 
-const getAllSortedByRecents = async () => {
-  try {
-    const db = await getConnection();
-    const todos = await db.collection(COLLECTION).find().sort({ date: -1 }).toArray();
-    return todos;
-  } catch (error) {
-    return error.message;
-  }
-};
-
-const getAllSortedByAz = async () => {
-  try {
-    const db = await getConnection();
-    const todos = await db.collection(COLLECTION).find().sort({ title: 1 }).toArray();
-    return todos;
-  } catch (error) {
-    return error.message;
-  }
-};
-
-const getAllSortedByZa = async () => {
-  try {
-    const db = await getConnection();
-    const todos = await db.collection(COLLECTION).find().sort({ title: -1 }).toArray();
-    return todos;
-  } catch (error) {
-    return error.message;
-  }
-};
-
 const update = async (document) => {
   try {
     const id = document._id;
@@ -83,9 +53,6 @@ const del = async (document) => {
 module.exports = {
   create,
   getAll,
-  getAllSortedByRecents,
-  getAllSortedByAz,
-  getAllSortedByZa,
   update,
   del,
 }; 

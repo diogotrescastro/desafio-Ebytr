@@ -1,23 +1,5 @@
 export async function getTodos() {
-  return fetch(`http://localhost:3000/todo/list/all`, {method: 'GET'})
-    .then((result) => result.json())
-    .then((data) => data);
-}
-
-export async function getTodosSortedByRecents() {
-  return fetch(`http://localhost:3000/todo/list/sortedbyrecents`, {method: 'GET'})
-    .then((result) => result.json())
-    .then((data) => data);
-}
-
-export async function getTodosSortedByAz() {
-  return fetch(`http://localhost:3000/todo/list/sortedbyaz`, {method: 'GET'})
-    .then((result) => result.json())
-    .then((data) => data);
-}
-
-export async function getTodosSortedByZa() {
-  return fetch(`http://localhost:3000/todo/list/sortedbyza`, {method: 'GET'})
+  return fetch(`http://localhost:3000/todo/list`, {method: 'GET'})
     .then((result) => result.json())
     .then((data) => data);
 }

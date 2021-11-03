@@ -19,33 +19,6 @@ const getAll = async (_req, res) => {
   }
 };
 
-const getAllSortedByRecents  = async (_req, res) => {
-  try {
-    const todos = await todoService.getAllSortedByRecents();
-    return res.status(200).json(todos);
-  } catch (error) {
-    return res.status(400).json({ err: error.message });
-  }
-};
-
-const getAllSortedByAz = async (_req, res) => {
-  try {
-    const todos = await todoService.getAllSortedByAz();
-    return res.status(200).json(todos);
-  } catch (error) {
-    return res.status(400).json({ err: error.message });
-  }
-};
-
-const getAllSortedByZa = async (_req, res) => {
-  try {
-    const todos = await todoService.getAllSortedByZa();
-    return res.status(200).json(todos);
-  } catch (error) {
-    return res.status(400).json({ err: error.message });
-  }
-};
-
 const update = async (req, res) => {
   try {
     const document = req.body;
@@ -69,9 +42,6 @@ const del = async (req, res) => {
 module.exports = {
   create,
   getAll,
-  getAllSortedByRecents,
-  getAllSortedByAz,
-  getAllSortedByZa,
   update,
   del
 }; 
