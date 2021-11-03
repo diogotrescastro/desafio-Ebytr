@@ -5,14 +5,12 @@ const COLLECTION = 'lista-de-tarefas';
 
 const create = async (document) => {
   try {
-    console.log(document);
     const db = await getConnection();
     const newTodo = await db.collection(COLLECTION)
     .insertOne(document);
-    console.log(newTodo)
     const { insertedId } = newTodo;
     const { status, title, edit} = document;
-    return { insertedId,title, status, edit };
+    return { _id: insertedId,title, status, edit };
   } catch (error) {
     return error.message;
   }
