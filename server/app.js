@@ -6,6 +6,6 @@ const Router = require('./routes/router')
 
 app.use(cors());
 app.use(express.json());
-app.use('/', Router);
+app.use('/todo', Router);
 
 module.exports = app;
