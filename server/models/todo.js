@@ -5,9 +5,11 @@ const COLLECTION = 'lista-de-tarefas';
 
 const create = async (document) => {
   try {
+    const {title, status, edit} = document;
+    const date = new Date()
     const db = await getConnection();
     const newTodo = await db.collection(COLLECTION)
-    .insertOne(document);
+    .insertOne({title, status, edit, date});
     return { message: 'Tarefa criada com sucesso'};
   } catch (error) {
     return error.message;
