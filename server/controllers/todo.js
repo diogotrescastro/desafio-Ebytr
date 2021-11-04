@@ -3,6 +3,7 @@ const todoService = require('../services/todo');
 const create = async (req, res) => {
   try {
     const document = req.body;
+    if (!document) return error;
     const newTodo = await todoService.create(document);
     return res.status(201).json(newTodo);
   } catch (error) {
@@ -22,6 +23,7 @@ const getAll = async (_req, res) => {
 const update = async (req, res) => {
   try {
     const document = req.body;
+    if (!document) return error;
     const todoUpdated = await todoService.update(document);
     return res.status(200).json(todoUpdated);
   } catch (error) {
@@ -32,8 +34,9 @@ const update = async (req, res) => {
 const del = async (req, res) => {
   try {
     const document = req.body;
-    await todoService.del(document);
-    return res.status(204).json();
+    if (!document) return error;
+    const todoDeleted = await todoService.del(document);
+    return res.status(204).json(todoDeleted);
   } catch (error) {
     return res.status(400).json({ err: error.message });
   }
