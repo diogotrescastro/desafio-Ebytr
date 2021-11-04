@@ -49,7 +49,7 @@ function Task({ getTodos }) {
           </option>
           <option value="completed">Concluída</option>
         </select>
-        <button type="submit">Criar</button>
+        <button type="submit" data-testid="btn-task-add">Criar</button>
         {validateInput && newTask.title === ""? <span className="empty-title">O campo não pode ser vazio</span> : ''} 
 
       </form>
