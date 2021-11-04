@@ -11,7 +11,7 @@ describe('(MODEL) Delete com sucesso uma nova tarefa no BD', () => {
   let connectionMock;
   const payload =  {	
     "_id": "6182df779e6fafe66a11c5dc",
-    "title": "a",
+    "title": "model",
    "status": "completed",
    "edit": true
  }
@@ -39,7 +39,7 @@ describe('(MODEL) Delete com sucesso uma nova tarefa no BD', () => {
 
     it('retorna um objeto', async () => {
       await TodoModel.create({	
-        "title": "a",
+        "title": "model",
        "status": "completed",
        "edit": true
      });

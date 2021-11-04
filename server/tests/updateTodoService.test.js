@@ -9,7 +9,7 @@ describe('(SERVICE) Atualiza uma tarefa no BD', () => {
   const payload =  { message: 'Tarefa atualizada com sucesso'};
   const todo = {
     "_id": "61828a110e8fb5affc1d4e58",
-    "title": "a",
+    "title": "service",
     "status": "pending",
     "edit": false
   }

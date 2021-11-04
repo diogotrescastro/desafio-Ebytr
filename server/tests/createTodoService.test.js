@@ -5,10 +5,9 @@ const TodoModel = require('../models/todo');
 const TodoService = require('../services/todo');
 
 describe('(SERVICE) Insere uma nova tarefa no BD', () => {
-  let connectionMock;
   const payload =  { message: 'Tarefa criada com sucesso'};
   const todo = {	
-    "title": "a",
+    "title": "service",
    "status": "completed",
    "edit": true
  };

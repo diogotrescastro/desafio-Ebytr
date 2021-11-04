@@ -8,7 +8,7 @@ describe('(SERVICE) Retorna o array de tarefas', () => {
   const payload =  [
     {	
       "_id": "6182df779e6fafe66a11c5dc",
-      "title": "a",
+      "title": "service",
      "status": "completed",
      "edit": true,
      "date": "2021-11-03T19:13:59.375Z"

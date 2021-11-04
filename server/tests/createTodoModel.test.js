@@ -5,27 +5,27 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 
 const mongoConnection = require('../models/connection');
 const TodoModel = require('../models/todo');
-const DB_NAME = 'tarefasMock';
+const DB_NAME = 'tarefas';
 
-describe('(MODEL)Insere com sucesso uma nova tarefa no BD', () => {
+describe('(MODEL)Insere uma nova tarefa no BD', () => {
   let connectionMock;
   const payload =  {	
-    "title": "a",
+    "title": "model",
    "status": "completed",
    "edit": true
  }
 
+  describe('quando é inserido com sucesso', () => {
+
   before(async () => {
     const DBServer = new MongoMemoryServer();
     const URLMock = await DBServer.getUri();
-
     connectionMock = await MongoClient
       .connect(URLMock, {
         useNewUrlParser: true,
         useUnifiedTopology: true
       })
       .then((conn) => conn.db(DB_NAME));
-
     
     sinon.stub(mongoConnection, 'getConnection').resolves(connectionMock);
   });
@@ -33,8 +33,6 @@ describe('(MODEL)Insere com sucesso uma nova tarefa no BD', () => {
   after(() => {
     mongoConnection.getConnection.restore();
   });
-
-  describe('quando é inserido com sucesso', () => {
 
     it('retorna um objeto', async () => {
       const response = await TodoModel.create(payload);

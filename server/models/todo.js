@@ -1,13 +1,14 @@
 const { ObjectId } = require('mongodb');
-const {getConnection} = require('./connection');
+const mongoConnection = require('./connection');
 
 const COLLECTION = 'lista';
 
 const create = async (document) => {
   try {
+    if (!document) return error;
     const {title, status, edit} = document;
     const date = new Date()
-    const db = await getConnection();
+    const db = await mongoConnection.getConnection();
     await db.collection(COLLECTION)
     .insertOne({title, status, edit, date});
     return { message: 'Tarefa criada com sucesso'};
@@ -18,7 +19,7 @@ const create = async (document) => {
 
 const getAll = async () => {
   try {
-    const db = await getConnection();
+    const db = await mongoConnection.getConnection();
     const todos = await db.collection(COLLECTION).find().toArray();
     return todos;
   } catch (error) {
@@ -28,9 +29,10 @@ const getAll = async () => {
 
 const update = async (document) => {
   try {
+    if (!document) return error;
     const id = document._id;
     const {title, status, edit} = document;
-    const db = await getConnection();
+    const db = await mongoConnection.getConnection();
     await db.collection(COLLECTION)
     .updateOne({ _id: ObjectId(id) }, { $set: {title, status, edit} });
     return { message: 'Tarefa atualizada com sucesso'};
@@ -41,7 +43,8 @@ const update = async (document) => {
 
 const del = async (document) => {
   try {
-    const db = await getConnection();
+    if (!document) return error;
+    const db = await mongoConnection.getConnection();
     await db.collection(COLLECTION)
     .deleteOne({ _id: ObjectId(document._id) });
     return { message: 'Tarefa deletada com sucesso'};

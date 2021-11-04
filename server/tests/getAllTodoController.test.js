@@ -12,6 +12,12 @@ describe("(Controller) Recebe o array de tarefas do BD", () => {
     before(() => {
       response.status = sinon.stub().returns(response);
       response.json = sinon.stub().returns();
+
+      sinon.stub(TodoService, 'getAll').resolves([]);
+    });
+
+    after(() => {
+      TodoService.getAll.restore();
     });
 
     it('é chamado o status com o código 200', async () => {

@@ -5,11 +5,10 @@ const TodoModel = require('../models/todo');
 const TodoService = require('../services/todo');
 
 describe('(SERVICE) Deleta uma nova tarefa no BD', () => {
-  let connectionMock;
   const payload =  { message: 'Tarefa deletada com sucesso'};
   const todo = {
     "_id": "61828a110e8fb5affc1d4e58",
-    "title": "a",
+    "title": "service",
     "status": "pending",
     "edit": false
   }
