@@ -1,4 +1,4 @@
-const {getTodos, addTodo, deleteTodo, updateTodo} = require('../../src/services/todoAPI');
+const {getTodos, addTodo, deleteTodo, updateTodo} = require('../services/todoAPI');
 
 afterEach(() => jest.clearAllMocks());
 

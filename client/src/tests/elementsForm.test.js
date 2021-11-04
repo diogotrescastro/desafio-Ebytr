@@ -4,7 +4,7 @@ import Form from '../components/Form';
 
 
 describe('Verifica os elementos do Form', () => {
-  test('testa se existe um form com o data-testid ""', () => {
+  test('testa se existe um form com o data-testid "form-input"', () => {
     const { getByTestId } = render(<Form />);
     const form = getByTestId('form-input');
     expect(form).toBeInTheDocument();
