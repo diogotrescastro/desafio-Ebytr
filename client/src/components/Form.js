@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { addTodo } from "../services/todoAPI";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { addTodo } from '../services/todoAPI';
 
 const initialTask = {
-  title: "",
-  status: "pending",
+  title: '',
+  status: 'pending',
   edit: false,
 };
-function Task({ getTodos }) {
+function Form({ getTodos }) {
   const [newTask, setNewTask] = useState(initialTask);
   const [validateInput, setvalidateInput] = useState(false);
 
@@ -17,7 +18,7 @@ function Task({ getTodos }) {
 
   function onSubmit(e) {
     e.preventDefault();
-    if (newTask.title === "") {
+    if (newTask.title === '') {
       setvalidateInput(true);
       return;
     }
@@ -27,15 +28,15 @@ function Task({ getTodos }) {
 
   function generateForm() {
     return (
-      <form onSubmit={onSubmit} data-testid="form-input">
+      <form onSubmit={ onSubmit } data-testid="form-input">
         <input
           type="text"
           name="title"
-          value={newTask.title}
-          onChange={onChange}
+          value={ newTask.title }
+          onChange={ onChange }
           data-testid="form-input-text"
         />
-        <select name="status" onChange={onChange} data-testid="form-select">
+        <select name="status" onChange={ onChange } data-testid="form-select">
           <option value="pending" data-testid="form-option-pending">
             Pendente
           </option>
@@ -49,16 +50,19 @@ function Task({ getTodos }) {
         <button type="submit" data-testid="btn-task-add">
           Criar
         </button>
-        {validateInput && newTask.title === "" ? (
+        {validateInput && newTask.title === '' ? (
           <span className="empty-title">O campo não pode ser vazio</span>
         ) : (
-          ""
+          ''
         )}
       </form>
     );
   }
-
   return <div className="task">{generateForm()}</div>;
 }
 
-export default Task;
+Form.propTypes = {
+  getTodos: PropTypes.func.isRequired,
+};
+
+export default Form;

@@ -1,62 +1,61 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import App from "../App";
+import { render } from '@testing-library/react';
+import App from '../App';
 
-describe("Verifica os botões na aplicação", () => {
+describe('Verifica os botões na aplicação', () => {
   test('testa se o botão "Todas Tarefas" existe', () => {
     const { getByTestId } = render(<App />);
 
-    const btnAll = getByTestId("btn-tasks-all");
+    const btnAll = getByTestId('btn-tasks-all');
     expect(btnAll).toBeInTheDocument();
-    expect(btnAll.type).toBe("button");
+    expect(btnAll.type).toBe('button');
   });
 
   test('testa se o botão "Pendentes" existe', () => {
     const { getByTestId } = render(<App />);
-    const btnPending = getByTestId("btn-tasks-pending");
+    const btnPending = getByTestId('btn-tasks-pending');
     expect(btnPending).toBeInTheDocument();
-    expect(btnPending.type).toBe("button");
+    expect(btnPending.type).toBe('button');
   });
 
   test('testa se o botão "Em Andamento" existe', () => {
     const { getByTestId } = render(<App />);
-    const btnProgress = getByTestId("btn-tasks-progress");
+    const btnProgress = getByTestId('btn-tasks-progress');
     expect(btnProgress).toBeInTheDocument();
-    expect(btnProgress.type).toBe("button");
+    expect(btnProgress.type).toBe('button');
   });
 
   test('testa se o botão "Concluídas" existe', () => {
     const { getByTestId } = render(<App />);
-    const btnProgress = getByTestId("btn-tasks-completed");
+    const btnProgress = getByTestId('btn-tasks-completed');
     expect(btnProgress).toBeInTheDocument();
-    expect(btnProgress.type).toBe("button");
+    expect(btnProgress.type).toBe('button');
   });
 
   test('testa se o botão de ordenar "Data Crescente" existe', () => {
     const { getByTestId } = render(<App />);
-    const btnOrderCrescent = getByTestId("btn-order-date-crescent");
+    const btnOrderCrescent = getByTestId('btn-order-date-crescent');
     expect(btnOrderCrescent).toBeInTheDocument();
-    expect(btnOrderCrescent.type).toBe("button");
+    expect(btnOrderCrescent.type).toBe('button');
   });
 
   test('testa se o botão de ordenar "Data Descrescente" existe', () => {
     const { getByTestId } = render(<App />);
-    const btnOrderDecrescent = getByTestId("btn-order-date-decrescent");
+    const btnOrderDecrescent = getByTestId('btn-order-date-decrescent');
     expect(btnOrderDecrescent).toBeInTheDocument();
-    expect(btnOrderDecrescent.type).toBe("button");
+    expect(btnOrderDecrescent.type).toBe('button');
   });
 
   test('testa se o botão de ordenar "A-Z" existe', () => {
     const { getByTestId } = render(<App />);
-    const btnOrderAz = getByTestId("btn-order-az");
+    const btnOrderAz = getByTestId('btn-order-az');
     expect(btnOrderAz).toBeInTheDocument();
-    expect(btnOrderAz.type).toBe("button");
+    expect(btnOrderAz.type).toBe('button');
   });
 
   test('testa se o botão de ordenar "Z-A" existe', () => {
     const { getByTestId } = render(<App />);
-    const btnOrderZa = getByTestId("btn-order-za");
+    const btnOrderZa = getByTestId('btn-order-za');
     expect(btnOrderZa).toBeInTheDocument();
-    expect(btnOrderZa.type).toBe("button");
+    expect(btnOrderZa.type).toBe('button');
   });
 });
