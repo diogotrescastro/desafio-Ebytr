@@ -34,26 +34,28 @@ function Task({ task, key, getTodos }) {
 
   function generateEditable() {
     return (
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} data-testid="form-todo-editable">
         <input
           key={key}
           type="text"
           name="title"
           value={editTask.title}
           onChange={onChange}
+          data-testid="input-todo-text"
         />
         <select
           key={key}
           name="status"
           onChange={onChange}
           value={editTask.status}
+          data-testid="select-text"
         >
-          <option value="pending">Pendente</option>
-          <option value="progress">Em Andamento</option>
-          <option value="completed">Concluída</option>
+          <option value="pending" data-testid="select-option-pending">Pendente</option>
+          <option value="progress" data-testid="select-option-progress">Em Andamento</option>
+          <option value="completed" data-testid="select-option-completed">Concluída</option>
         </select>
-        <button onClick={handleDelete}>x</button>
-        <button type="submit">Atualizar</button>
+        <button type="button" data-testid="btn-todo-delete" onClick={handleDelete}>x</button>
+        <button type="submit" data-testid="btn-todo-submit">Atualizar</button>
         {validateInput && editTask.title === ""? <span className="empty-title">O campo não pode ser vazio</span> : ''} 
 
       </form>
@@ -63,11 +65,11 @@ function Task({ task, key, getTodos }) {
   function generateTasks() {
     return (
       <>
-        <span>{task.title}</span>
-        <span>{` - ${task.status}`}</span>
+        <span data-testid="task-title">{task.title}</span>
+        <span data-testid="task-status">{` - ${task.status}`}</span>
         <span>
           {" "}
-          <button onClick={() => handleEdit()}>editar</button>
+          <button type="button" data-testid="task-btn-edit" onClick={() => handleEdit()}>editar</button>
         </span>
       </>
     );

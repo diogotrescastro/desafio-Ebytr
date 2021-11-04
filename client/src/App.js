@@ -35,7 +35,6 @@ function App() {
     })
     setTodos(result);
     forceUpdate();
-    console.log(todos);
   }
 
   function setTodosSortAz() {
@@ -49,8 +48,6 @@ function App() {
     })
     setTodos(result);
     forceUpdate();
-    console.log(todos);
-    console.log(result);
   }
 
   function setTodosSortZa() {
@@ -64,8 +61,6 @@ function App() {
     })
     setTodos(result);
     forceUpdate();
-    console.log(todos);
-    console.log(result);
   }
 
   const filteredTodos = filter? todos.filter(todo => todo.status === filter) : todos;
@@ -73,24 +68,22 @@ function App() {
 
   return (
     <div className="App">
-      {console.log(filteredTodos)}
        <h1> Lista de Tarefas </h1>
        <div className="filters">
        <span>Status</span>
-         <button onClick={() => setFilter()}>Todas Tarefas</button>
-         <button onClick={() => setFilter('pending')}>Pendentes</button>
-         <button onClick={() => setFilter('progress')}>Em Andamento</button>
-         <button onClick={() => setFilter('completed')}>Prontas</button>
+         <button type="button" data-testid="btn-tasks-all" onClick={() => setFilter()}>Todas Tarefas</button>
+         <button type="button" data-testid="btn-tasks-pending" onClick={() => setFilter('pending')}>Pendentes</button>
+         <button type="button" data-testid="btn-tasks-progress" onClick={() => setFilter('progress')}>Em Andamento</button>
+         <button type="button" data-testid="btn-tasks-completed" onClick={() => setFilter('completed')}>Concluídas</button>
        </div>
        <div className="sorted">
          <span>Ordenação</span>
-         <button onClick={() => setTodosFromAPI()}>Data Descrescente</button>
-         <button onClick={() => setTodosSortRecents()}>Data Crescente</button>
-         <button onClick={() => setTodosSortAz()}>A-Z</button>
-         <button onClick={() => setTodosSortZa()}>Z-A</button>
+         <button type="button" data-testid="btn-order-date-crescent" onClick={() => setTodosFromAPI()}>Data Descrescente</button>
+         <button type="button" data-testid="btn-order-date-decrescent" onClick={() => setTodosSortRecents()}>Data Crescente</button>
+         <button type="button" data-testid="btn-order-az" onClick={() => setTodosSortAz()}>A-Z</button>
+         <button type="button" data-testid="btn-order-za" onClick={() => setTodosSortZa()}>Z-A</button>
        </div>
        {filteredTodos.map((todo,index) => {
-         console.log(todo.title)
          return (
            <div key={index}>
            <Task
