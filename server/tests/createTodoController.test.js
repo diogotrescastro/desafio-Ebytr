@@ -1,17 +1,17 @@
-const sinon = require("sinon");
-const { expect } = require("chai");
+const sinon = require('sinon');
+const { expect } = require('chai');
 
-const TodoController = require("../controllers/todo");
-const TodoService = require("../services/todo");
+const TodoController = require('../controllers/todo');
+const TodoService = require('../services/todo');
 
-describe("(Controller) Insere uma nova tarefa no BD", () => {
+describe('(Controller) Insere uma nova tarefa no BD', () => {
   const todo = {
-    title: "controller",
-    status: "pending",
+    title: 'controller',
+    status: 'pending',
     edit: false,
   };
 
-  describe("quando é inserido com sucesso", () => {
+  describe('quando é inserido com sucesso', () => {
     const response = {};
     const request = {};
 
@@ -21,7 +21,9 @@ describe("(Controller) Insere uma nova tarefa no BD", () => {
       response.status = sinon.stub().returns(response);
       response.json = sinon.stub().returns();
 
-      sinon.stub(TodoService, 'create').resolves({ message: 'Tarefa criada com sucesso'});
+      sinon
+        .stub(TodoService, 'create')
+        .resolves({ message: 'Tarefa criada com sucesso' });
     });
 
     after(() => {
@@ -33,12 +35,14 @@ describe("(Controller) Insere uma nova tarefa no BD", () => {
       expect(response.status.calledWith(201)).to.be.equal(true);
     });
 
-    it("retorna uma mensagem 'Tarefa criada com sucesso'", async () => {
+    it('retorna uma mensagem "Tarefa criada com sucesso"', async () => {
       await TodoController.create(request, response);
-      expect(response.json.calledWith({ message: 'Tarefa criada com sucesso' })).to.be.equal(true);
+      expect(
+        response.json.calledWith({ message: 'Tarefa criada com sucesso' })
+      ).to.be.equal(true);
     });
   });
-  describe("quando é inserido sem sucesso", () => {
+  describe('quando é inserido sem sucesso', () => {
     const response = {};
     const request = {};
 
