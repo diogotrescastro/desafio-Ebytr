@@ -1,4 +1,5 @@
 import './App.css';
+import M from 'materialize-css';
 import { useState, useEffect, useCallback } from 'react';
 import { getTodos } from './services/todoAPI';
 import Form from './components/Form';
@@ -22,6 +23,7 @@ function App() {
 
   useEffect(() => {
     setTodosFromAPI();
+    M.AutoInit();
   }, []);
 
   const oneNegative = -1;
@@ -75,6 +77,7 @@ function App() {
           type="button"
           data-testid="btn-tasks-all"
           onClick={ () => setFilter() }
+          className="waves-effect waves-light btn"
         >
           Todas Tarefas
         </button>
