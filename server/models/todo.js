@@ -33,7 +33,7 @@ const update = async (document) => {
     const db = await getConnection();
     await db.collection(COLLECTION)
     .updateOne({ _id: ObjectId(id) }, { $set: {title, status, edit} });
-    return { message: 'Tarefa criada com sucesso'};
+    return { message: 'Tarefa atualizada com sucesso'};
   } catch (error) {
     return error.message;
   }

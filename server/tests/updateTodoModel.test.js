@@ -7,9 +7,10 @@ const mongoConnection = require('../models/connection');
 const TodoModel = require('../models/todo');
 const DB_NAME = 'tarefasMock';
 
-describe('Insere com sucesso uma nova tarefa no BD', () => {
+describe('Atualiza com sucesso uma nova tarefa no BD', () => {
   let connectionMock;
   const payload =  {	
+    "_id": "6182df779e6fafe66a11c5dc",
     "title": "a",
    "status": "completed",
    "edit": true
@@ -34,24 +35,29 @@ describe('Insere com sucesso uma nova tarefa no BD', () => {
     mongoConnection.getConnection.restore();
   });
 
-  describe('quando é inserido com sucesso', () => {
+  describe('quando é atualizado com sucesso', () => {
 
     it('retorna um objeto', async () => {
-      const response = await TodoModel.create(payload);
+      await TodoModel.create({	
+        "title": "a",
+       "status": "completed",
+       "edit": true
+     });
+      const response = await TodoModel.update(payload);
 
       expect(response).to.be.a('object');
     });
 
     it('tal objeto possui a propriedade "message"', async () => {
-      const response = await TodoModel.create(payload);
+      const response = await TodoModel.update(payload);
 
       expect(response).to.have.a.property('message');
     });
 
-    it('a propriedade messsage deve conter o texto "Tarefa criada com sucesso"', async () => {
-      const response = await TodoModel.create(payload);
+    it('a propriedade messsage deve conter o texto "Tarefa atualizada com sucesso"', async () => {
+      const response = await TodoModel.update(payload);
 
-      expect(response.message).to.be.equal('Tarefa criada com sucesso');
+      expect(response.message).to.be.equal('Tarefa atualizada com sucesso');
     });
   });
 
