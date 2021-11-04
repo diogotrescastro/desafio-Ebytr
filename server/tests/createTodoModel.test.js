@@ -7,7 +7,7 @@ const mongoConnection = require('../models/connection');
 const TodoModel = require('../models/todo');
 const DB_NAME = 'tarefasMock';
 
-describe('Insere com sucesso uma nova tarefa no BD', () => {
+describe('(MODEL)Insere com sucesso uma nova tarefa no BD', () => {
   let connectionMock;
   const payload =  {	
     "title": "a",

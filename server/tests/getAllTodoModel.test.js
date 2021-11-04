@@ -7,7 +7,7 @@ const mongoConnection = require('../models/connection');
 const TodoModel = require('../models/todo');
 const DB_NAME = 'tarefasMock';
 
-describe('Retorna o array de tarefas', () => {
+describe('(MODEL) Retorna o array de tarefas', () => {
   let connectionMock;
   const payload =  {	
   "title": "test",

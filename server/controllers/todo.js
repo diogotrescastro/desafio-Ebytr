@@ -32,8 +32,8 @@ const update = async (req, res) => {
 const del = async (req, res) => {
   try {
     const document = req.body;
-    await todoService.del(document);
-    return res.status(204).json();
+    const todoDeleted = await todoService.del(document);
+    return res.status(204).json(todoDeleted);
   } catch (error) {
     return res.status(400).json({ err: error.message });
   }

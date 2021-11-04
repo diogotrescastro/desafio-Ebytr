@@ -7,7 +7,7 @@ const mongoConnection = require('../models/connection');
 const TodoModel = require('../models/todo');
 const DB_NAME = 'tarefasMock';
 
-describe('Atualiza com sucesso uma nova tarefa no BD', () => {
+describe('(MODEL) Atualiza com sucesso uma nova tarefa no BD', () => {
   let connectionMock;
   const payload =  {	
     "_id": "6182df779e6fafe66a11c5dc",
