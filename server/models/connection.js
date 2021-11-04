@@ -17,4 +17,4 @@ const getConnection = () => (db
     return db;
     }));
 
-module.exports = getConnection;  
+module.exports = {getConnection};  

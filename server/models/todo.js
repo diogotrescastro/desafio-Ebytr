@@ -1,5 +1,5 @@
 const { ObjectId } = require('mongodb');
-const getConnection = require('./connection');
+const {getConnection} = require('./connection');
 
 const COLLECTION = 'lista';
 
