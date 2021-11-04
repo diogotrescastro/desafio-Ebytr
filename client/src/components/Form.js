@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import { addTodo } from '../services/todoAPI';
 
 const initialTask = {
@@ -7,6 +6,7 @@ const initialTask = {
   status: 'pending',
   edit: false,
 };
+// eslint-disable-next-line react/prop-types
 function Form({ getTodos }) {
   const [newTask, setNewTask] = useState(initialTask);
   const [validateInput, setvalidateInput] = useState(false);
@@ -60,9 +60,5 @@ function Form({ getTodos }) {
   }
   return <div className="task">{generateForm()}</div>;
 }
-
-Form.propTypes = {
-  getTodos: PropTypes.func.isRequired,
-};
 
 export default Form;
