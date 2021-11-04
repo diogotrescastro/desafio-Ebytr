@@ -5,7 +5,7 @@ const COLLECTION = 'lista';
 
 const create = async (document) => {
   try {
-    if (!document) return error;
+    if (!document) return {error: new Error('error occured')};
     const {title, status, edit} = document;
     const date = new Date()
     const db = await mongoConnection.getConnection();
@@ -29,7 +29,7 @@ const getAll = async () => {
 
 const update = async (document) => {
   try {
-    if (!document) return error;
+    if (!document) return {error: new Error('error occured')};
     const id = document._id;
     const {title, status, edit} = document;
     const db = await mongoConnection.getConnection();
@@ -43,7 +43,7 @@ const update = async (document) => {
 
 const del = async (document) => {
   try {
-    if (!document) return error;
+    if (!document) return {error: new Error('error occured')};
     const db = await mongoConnection.getConnection();
     await db.collection(COLLECTION)
     .deleteOne({ _id: ObjectId(document._id) });

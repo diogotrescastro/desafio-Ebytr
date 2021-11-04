@@ -1,12 +1,11 @@
-const sinon = require("sinon");
-const { expect } = require("chai");
+const sinon = require('sinon');
+const { expect } = require('chai');
 
-const TodoController = require("../controllers/todo");
+const TodoController = require('../controllers/todo');
 const TodoService = require('../services/todo');
 
-describe("(Controller) Recebe o array de tarefas do BD", () => {
-
-  describe("quando recebe com sucesso", () => {
+describe('(Controller) Recebe o array de tarefas do BD', () => {
+  describe('quando recebe com sucesso', () => {
     const response = {};
     const _request = {};
     before(() => {

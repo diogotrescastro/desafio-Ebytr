@@ -9,24 +9,21 @@ const DB_NAME = 'tarefasMock';
 
 describe('(MODEL) Retorna o array de tarefas', () => {
   let connectionMock;
-  const payload =  {	
-  "title": "test",
-  "status": "completed",
-  "edit": true
- }
+  const payload = {
+    title: 'test',
+    status: 'completed',
+    edit: true,
+  };
 
   before(async () => {
     const DBServer = new MongoMemoryServer();
     const URLMock = await DBServer.getUri();
 
-    connectionMock = await MongoClient
-      .connect(URLMock, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      })
-      .then((conn) => conn.db(DB_NAME));
+    connectionMock = await MongoClient.connect(URLMock, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }).then((conn) => conn.db(DB_NAME));
 
-    
     sinon.stub(mongoConnection, 'getConnection').resolves(connectionMock);
   });
 
@@ -35,7 +32,6 @@ describe('(MODEL) Retorna o array de tarefas', () => {
   });
 
   describe('quando retorna com sucesso', () => {
-
     it('retorna um array', async () => {
       await TodoModel.create(payload);
       const response = await TodoModel.getAll(payload);
@@ -45,7 +41,7 @@ describe('(MODEL) Retorna o array de tarefas', () => {
 
     it('tal array possui um objeto com os dados da tarefa', async () => {
       const response = await TodoModel.getAll(payload);
-      expect(response[0]).to.be.a("object");
+      expect(response[0]).to.be.a('object');
     });
 
     it('tal array possui um objeto com as propriedades "_id, title, status, edit, date"', async () => {
@@ -56,7 +52,5 @@ describe('(MODEL) Retorna o array de tarefas', () => {
       expect(response[0]).to.have.property('edit');
       expect(response[0]).to.have.property('date');
     });
-
   });
-
 });

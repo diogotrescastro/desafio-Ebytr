@@ -1,18 +1,18 @@
-const sinon = require("sinon");
-const { expect } = require("chai");
+const sinon = require('sinon');
+const { expect } = require('chai');
 
-const TodoController = require("../controllers/todo");
-const TodoService = require("../services/todo");
+const TodoController = require('../controllers/todo');
+const TodoService = require('../services/todo');
 
-describe("(Controller) Atualiza um tarefa no BD", () => {
+describe('(Controller) Atualiza um tarefa no BD', () => {
   const todo = {
-    "_id": "61828a110e8fb5affc1d4e58",
-    "title": "controller",
-    "status": "pending",
-    "edit": false
+    _id: '61828a110e8fb5affc1d4e58',
+    title: 'controller',
+    status: 'pending',
+    edit: false,
   };
 
-  describe("quando é atualizada com sucesso", () => {
+  describe('quando é atualizada com sucesso', () => {
     const response = {};
     const request = {};
 
@@ -22,7 +22,9 @@ describe("(Controller) Atualiza um tarefa no BD", () => {
       response.status = sinon.stub().returns(response);
       response.json = sinon.stub().returns();
 
-      sinon.stub(TodoService, 'update').resolves({ message: 'Tarefa atualizada com sucesso'});
+      sinon
+        .stub(TodoService, 'update')
+        .resolves({ message: 'Tarefa atualizada com sucesso' });
     });
 
     after(() => {
@@ -34,12 +36,14 @@ describe("(Controller) Atualiza um tarefa no BD", () => {
       expect(response.status.calledWith(200)).to.be.equal(true);
     });
 
-    it("retorna uma mensagem 'Tarefa atualizada com sucesso'", async () => {
+    it('retorna uma mensagem "Tarefa atualizada com sucesso"', async () => {
       await TodoController.update(request, response);
-      expect(response.json.calledWith({ message: 'Tarefa atualizada com sucesso' })).to.be.equal(true);
+      expect(
+        response.json.calledWith({ message: 'Tarefa atualizada com sucesso' })
+      ).to.be.equal(true);
     });
   });
-  describe("quando é inserido sem sucesso", () => {
+  describe('quando é inserido sem sucesso', () => {
     const response = {};
     const request = {};
 
@@ -49,7 +53,9 @@ describe("(Controller) Atualiza um tarefa no BD", () => {
       response.status = sinon.stub().returns(response);
       response.json = sinon.stub().returns();
 
-      sinon.stub(TodoService, 'update').resolves({ message: 'Tarefa atualizada com sucesso'});
+      sinon
+        .stub(TodoService, 'update')
+        .resolves({ message: 'Tarefa atualizada com sucesso' });
     });
 
     after(() => {

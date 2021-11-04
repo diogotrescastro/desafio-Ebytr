@@ -3,6 +3,7 @@ const todoService = require('../services/todo');
 const create = async (req, res) => {
   try {
     const document = req.body;
+    // eslint-disable-next-line no-undef
     if (!document) return error;
     const newTodo = await todoService.create(document);
     return res.status(201).json(newTodo);
@@ -23,6 +24,7 @@ const getAll = async (_req, res) => {
 const update = async (req, res) => {
   try {
     const document = req.body;
+    // eslint-disable-next-line no-undef
     if (!document) return error;
     const todoUpdated = await todoService.update(document);
     return res.status(200).json(todoUpdated);
@@ -34,6 +36,7 @@ const update = async (req, res) => {
 const del = async (req, res) => {
   try {
     const document = req.body;
+    // eslint-disable-next-line no-undef
     if (!document) return error;
     const todoDeleted = await todoService.del(document);
     return res.status(204).json(todoDeleted);
@@ -47,4 +50,4 @@ module.exports = {
   getAll,
   update,
   del
-}; 
+};

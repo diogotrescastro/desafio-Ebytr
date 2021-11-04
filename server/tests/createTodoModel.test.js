@@ -9,30 +9,27 @@ const DB_NAME = 'tarefas';
 
 describe('(MODEL)Insere uma nova tarefa no BD', () => {
   let connectionMock;
-  const payload =  {	
-    "title": "model",
-   "status": "completed",
-   "edit": true
- }
+  const payload = {
+    title: 'model',
+    status: 'completed',
+    edit: true,
+  };
 
   describe('quando é inserido com sucesso', () => {
-
-  before(async () => {
-    const DBServer = new MongoMemoryServer();
-    const URLMock = await DBServer.getUri();
-    connectionMock = await MongoClient
-      .connect(URLMock, {
+    before(async () => {
+      const DBServer = new MongoMemoryServer();
+      const URLMock = await DBServer.getUri();
+      connectionMock = await MongoClient.connect(URLMock, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
-      })
-      .then((conn) => conn.db(DB_NAME));
-    
-    sinon.stub(mongoConnection, 'getConnection').resolves(connectionMock);
-  });
+        useUnifiedTopology: true,
+      }).then((conn) => conn.db(DB_NAME));
 
-  after(() => {
-    mongoConnection.getConnection.restore();
-  });
+      sinon.stub(mongoConnection, 'getConnection').resolves(connectionMock);
+    });
+
+    after(() => {
+      mongoConnection.getConnection.restore();
+    });
 
     it('retorna um objeto', async () => {
       const response = await TodoModel.create(payload);
@@ -52,5 +49,4 @@ describe('(MODEL)Insere uma nova tarefa no BD', () => {
       expect(response.message).to.be.equal('Tarefa criada com sucesso');
     });
   });
-
 });

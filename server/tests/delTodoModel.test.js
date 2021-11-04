@@ -9,25 +9,22 @@ const DB_NAME = 'tarefasMock';
 
 describe('(MODEL) Delete com sucesso uma nova tarefa no BD', () => {
   let connectionMock;
-  const payload =  {	
-    "_id": "6182df779e6fafe66a11c5dc",
-    "title": "model",
-   "status": "completed",
-   "edit": true
- }
+  const payload = {
+    _id: '6182df779e6fafe66a11c5dc',
+    title: 'model',
+    status: 'completed',
+    edit: true,
+  };
 
   before(async () => {
     const DBServer = new MongoMemoryServer();
     const URLMock = await DBServer.getUri();
 
-    connectionMock = await MongoClient
-      .connect(URLMock, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      })
-      .then((conn) => conn.db(DB_NAME));
+    connectionMock = await MongoClient.connect(URLMock, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }).then((conn) => conn.db(DB_NAME));
 
-    
     sinon.stub(mongoConnection, 'getConnection').resolves(connectionMock);
   });
 
@@ -36,13 +33,12 @@ describe('(MODEL) Delete com sucesso uma nova tarefa no BD', () => {
   });
 
   describe('quando é atualizado com sucesso', () => {
-
     it('retorna um objeto', async () => {
-      await TodoModel.create({	
-        "title": "model",
-       "status": "completed",
-       "edit": true
-     });
+      await TodoModel.create({
+        title: 'model',
+        status: 'completed',
+        edit: true,
+      });
       const response = await TodoModel.del(payload);
 
       expect(response).to.be.a('object');
@@ -60,5 +56,4 @@ describe('(MODEL) Delete com sucesso uma nova tarefa no BD', () => {
       expect(response.message).to.be.equal('Tarefa deletada com sucesso');
     });
   });
-
 });
