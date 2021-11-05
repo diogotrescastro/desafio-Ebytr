@@ -60,31 +60,30 @@ Neste projeto foi utilizado:
 
 2. Entre na pasta do servidor
 
-- `cd server`
+  - `cd server`
 
 2. Instale as dependências do servidor
 
-- `npm install`
+  - `npm install`
 
 3. Inicialize o servidor
 
-- `npm run dev`
+  - `npm run dev`
 
-4. Retorne a pasta raiz do desafio
+4. Abra um novo terminal na pasta raiz do desafio
 
-- `cd ..`
 
 5. Entre na pasta do cliente
 
-- `cd client`
+  - `cd client`
 
 6. Instale as dependências do servidor
 
-- `npm install`
+  - `npm install`
 
 7. Inicialize o cliente (React)
 
-- `npm start`
+  - `npm start`
 
 8. A aplicação já estará rodando em seu navegador
 
@@ -106,22 +105,23 @@ Para executar os testes localmente, a partir da pasta raiz `desafio-Ebytr` execu
 
   - Entre na pasta do servidor
 
-  - `cd server`
+    - `cd server`
 
   - Execute o comando
 
-  - `npm test`
+    - `npm test`
 
-  - Será mostrado o resultado de todos os testes e relatório de cobertura
+  - Será mostrado o resultado de todos os testes e relatório de cobertura.
 
 2. Para rodar os testes do cliente:
 
   - Entre na pasta do cliente
 
-  - `cd client`
+    - `cd client`
 
   - Execute o comando
 
-  - `npm test`
+    - `npm test`
 
-  - Será mostrado o resultado de todos os testes e relatório de cobertura
+  - Será mostrado o resultado de todos os testes e relatório de cobertura.
+  - Caso queira encerrar os testes, precione `Ctrl + c`.
