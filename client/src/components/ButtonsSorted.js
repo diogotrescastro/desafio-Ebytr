@@ -16,7 +16,10 @@ function ButtonsSorted({
     padding: '14px 16px',
   };
   return (
-    <>
+    <div
+      className="row l2 s2 right right-align"
+      style={ { marginRight: 'unset' } }
+    >
       <a
         className="dropdown-trigger btn grey"
         href="#menu"
@@ -79,7 +82,7 @@ function ButtonsSorted({
         </li>
 
       </ul>
-    </>
+    </div>
   );
 }
 

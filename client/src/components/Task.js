@@ -53,10 +53,10 @@ function Task({ task, getTodos }) {
 
   function generateEditable() {
     return (
-      <div className="row">
+      <div className="row center-align">
         <form onSubmit={ onSubmit } data-testid="form-todo-editable" className="col s12">
           <div className="row">
-            <div className="input-field col s6">
+            <div className="input-field col s12 l6">
               <input
                 type="text"
                 name="title"
@@ -66,7 +66,7 @@ function Task({ task, getTodos }) {
                 id="insertTitleUpdate"
               />
               <label htmlFor="insertTitleUpdate">
-                {validateInput && newTask.title === '' ? (
+                {validateInput && editTask.title === '' ? (
                   <span className="empty-title">O campo não pode ser vazio</span>
                 ) : (
                   ''
@@ -77,11 +77,6 @@ function Task({ task, getTodos }) {
             <SelectStatus change={ onChange } value={ editTask.status } />
             <ButtonsEdit handleDelete={ handleDelete } />
           </div>
-          {validateInput && editTask.title === '' ? (
-            <span className="empty-title">O campo não pode ser vazio</span>
-          ) : (
-            ''
-          )}
         </form>
       </div>
     );

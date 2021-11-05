@@ -33,7 +33,7 @@ function Form({ getTodos }) {
       <div className="row">
         <form onSubmit={ onSubmit } data-testid="form-input" className="col s12">
           <div className="row">
-            <div className="input-field col s6">
+            <div className="input-field col l6 s12">
               <input
                 type="text"
                 name="title"
@@ -54,11 +54,11 @@ function Form({ getTodos }) {
               </label>
             </div>
             <SelectStatus change={ onChange } />
-            <div className="input-field col s2">
+            <div className="input-field col l2 s3 right">
               <button
                 type="submit"
                 data-testid="btn-task-add"
-                className="waves-effect waves-light btn-small"
+                className="waves-effect waves-light btn-small right"
               >
                 Criar
               </button>
