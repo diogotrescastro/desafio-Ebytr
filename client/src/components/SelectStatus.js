@@ -28,6 +28,8 @@ function SelectStatus({ change, value }) {
           Concluída
         </option>
       </select>
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+      <label htmlFor="form-select">Status</label>
     </div>
   );
 }

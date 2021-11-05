@@ -72,23 +72,26 @@ function App() {
     : todos;
 
   return (
-    <div className="App">
-      <h1> Lista de Tarefas </h1>
-      <ButtonsFilters setFilter={ setFilter } />
-      <ButtonsSorted
-        setTodosFromAPI={ setTodosFromAPI }
-        setTodosSortRecents={ setTodosSortRecents }
-        setTodosSortAz={ setTodosSortAz }
-        setTodosSortZa={ setTodosSortZa }
-      />
-      {filteredTodos.map((todo, index) => (
-        <div key={ index }>
-          <Task task={ todo } getTodos={ setTodosFromAPI } />
-        </div>
-      ))}
-      <br />
-      <br />
-      <br />
+    <div className="App container">
+      <h1 className="center-align"> Lista de Tarefas </h1>
+      <div
+        style={ { display: 'flex', alignItems: 'center', justifyContent: 'center' } }
+      >
+        <ButtonsFilters setFilter={ setFilter } />
+        <ButtonsSorted
+          setTodosFromAPI={ setTodosFromAPI }
+          setTodosSortRecents={ setTodosSortRecents }
+          setTodosSortAz={ setTodosSortAz }
+          setTodosSortZa={ setTodosSortZa }
+        />
+      </div>
+      <div style={ { margin: '50px 0' } }>
+        {filteredTodos.map((todo, index) => (
+          <div key={ index }>
+            <Task task={ todo } getTodos={ setTodosFromAPI } />
+          </div>
+        ))}
+      </div>
       <Form getTodos={ setTodosFromAPI } />
     </div>
   );

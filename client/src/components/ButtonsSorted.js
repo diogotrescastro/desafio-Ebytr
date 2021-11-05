@@ -6,47 +6,49 @@ function ButtonsSorted({
   setTodosSortAz,
   setTodosSortZa,
 }) {
+  const buttonDrop = {
+    all: 'unset',
+    textAlign: 'center',
+    fontSize: '16px',
+    color: '#26a69a',
+    display: 'block',
+    lineHeight: '22px',
+    padding: '14px 16px',
+  };
   return (
-    <div>
+    <>
       <a
-        className="dropdown-trigger btn"
+        className="dropdown-trigger btn grey"
         href="#menu"
         data-target="dropdown1"
       >
-        Ordenar
+        <i className="material-icons">filter_list</i>
 
       </a>
       <ul id="dropdown1" className="dropdown-content sorted">
         <li>
           <button
             type="button"
-            data-testid="btn-order-date-crescent"
-            onClick={ () => setTodosFromAPI() }
-            className="waves-effect waves-light btn-small"
-          >
-            Data D
-          </button>
-        </li>
-        <li className="divider" />
-        <li>
-          <button
-            type="button"
             data-testid="btn-order-date-decrescent"
             onClick={ () => setTodosSortRecents() }
             className="waves-effect waves-light btn-small"
+            style={ buttonDrop }
           >
-            Data C
+            Data
+            <i className="material-icons">arrow_drop_up</i>
           </button>
         </li>
         <li className="divider" />
         <li>
           <button
             type="button"
-            data-testid="btn-order-az"
-            onClick={ () => setTodosSortAz() }
+            data-testid="btn-order-date-crescent"
+            onClick={ () => setTodosFromAPI() }
             className="waves-effect waves-light btn-small"
+            style={ buttonDrop }
           >
-            A-Z
+            Data
+            <i className="material-icons">arrow_drop_down</i>
           </button>
         </li>
         <li className="divider" />
@@ -56,12 +58,28 @@ function ButtonsSorted({
             data-testid="btn-order-za"
             onClick={ () => setTodosSortZa() }
             className="waves-effect waves-light btn-small"
+            style={ buttonDrop }
           >
-            Z-A
+            Z - A
+            <i className="material-icons">arrow_drop_up</i>
           </button>
         </li>
+        <li className="divider" />
+        <li>
+          <button
+            type="button"
+            data-testid="btn-order-az"
+            onClick={ () => setTodosSortAz() }
+            className="waves-effect waves-light btn-small"
+            style={ buttonDrop }
+          >
+            A - Z
+            <i className="material-icons">arrow_drop_down</i>
+          </button>
+        </li>
+
       </ul>
-    </div>
+    </>
   );
 }
 

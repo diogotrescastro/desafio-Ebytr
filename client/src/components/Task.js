@@ -74,26 +74,8 @@ function Task({ task, getTodos }) {
 
               </label>
             </div>
-            {generateStatus}
             <SelectStatus change={ onChange } value={ editTask.status } />
             <ButtonsEdit handleDelete={ handleDelete } />
-            {/* <div className="input-field col s2">
-              <button
-                type="button"
-                data-testid="btn-todo-delete"
-                onClick={ handleDelete }
-                className="btn-floating btn-small waves-effect waves-light red"
-              >
-                <i className="material-icons">add</i>
-              </button>
-              <button
-                type="submit"
-                data-testid="btn-todo-submit"
-                className="waves-effect waves-light btn-small"
-              >
-                Atualizar
-              </button>
-            </div> */}
           </div>
           {validateInput && editTask.title === '' ? (
             <span className="empty-title">O campo não pode ser vazio</span>
@@ -107,24 +89,29 @@ function Task({ task, getTodos }) {
 
   function generateTasks() {
     return (
-      <>
-        <span data-testid="task-title">{title}</span>
-        {/* <span data-testid="task-status">{` - ${statusNew}`}</span> */}
-        <div className="chip">
-          { statusNew }
-        </div>
-        <span>
-          {' '}
+      <div className="row">
+        <div className="divider" />
+        <span
+          data-testid="task-title"
+          style={ { fontSize: '18px', lineHeight: '32px' } }
+        >
+          {title}
+
+        </span>
+        <div className="right">
+          <div className="chip">
+            { statusNew }
+          </div>
           <button
             type="button"
             data-testid="task-btn-edit"
             onClick={ () => handleEdit() }
             className="btn-floating btn-small waves-effect waves-light"
           >
-            e
+            <i className="material-icons">create</i>
           </button>
-        </span>
-      </>
+        </div>
+      </div>
     );
   }
 
