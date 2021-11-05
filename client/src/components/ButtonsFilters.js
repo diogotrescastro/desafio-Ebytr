@@ -8,6 +8,7 @@ function ButtonsFilters({ setFilter }) {
         data-testid="btn-tasks-all"
         onClick={ () => setFilter() }
         className="waves-effect waves-light btn-small"
+        style={ { margin: '5px' } }
       >
         Todas Tarefas
       </button>
@@ -16,6 +17,7 @@ function ButtonsFilters({ setFilter }) {
         data-testid="btn-tasks-pending"
         onClick={ () => setFilter('pending') }
         className="waves-effect waves-light btn-small"
+        style={ { margin: '5px' } }
       >
         Pendentes
       </button>
@@ -24,6 +26,7 @@ function ButtonsFilters({ setFilter }) {
         data-testid="btn-tasks-progress"
         onClick={ () => setFilter('progress') }
         className="waves-effect waves-light btn-small"
+        style={ { margin: '5px' } }
       >
         Em Andamento
       </button>
@@ -32,6 +35,7 @@ function ButtonsFilters({ setFilter }) {
         data-testid="btn-tasks-completed"
         onClick={ () => setFilter('completed') }
         className="waves-effect waves-light btn-small"
+        style={ { margin: '5px' } }
       >
         Concluídas
       </button>
