@@ -27,7 +27,7 @@ describe('Verifica se as funções fetch são chamadas', () => {
 
     getTodos();
     expect(global.fetch).toBeCalledTimes(1);
-    expect(global.fetch).toBeCalledWith('http://localhost:3000/todo/list', { method: 'GET' });
+    expect(global.fetch).toBeCalledWith('http://localhost:3001/todo/list', { method: 'GET' });
   });
 
   it('função addTodo', async () => {
@@ -45,7 +45,7 @@ describe('Verifica se as funções fetch são chamadas', () => {
 
     addTodo(todo, testFunc);
     expect(global.fetch).toBeCalledTimes(1);
-    expect(global.fetch).toBeCalledWith('http://localhost:3000/todo/add', {
+    expect(global.fetch).toBeCalledWith('http://localhost:3001/todo/add', {
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',
       body: JSON.stringify(todo),
@@ -69,7 +69,7 @@ describe('Verifica se as funções fetch são chamadas', () => {
 
     deleteTodo(todo, testFunc);
     expect(global.fetch).toBeCalledTimes(1);
-    expect(global.fetch).toBeCalledWith('http://localhost:3000/todo/delete', {
+    expect(global.fetch).toBeCalledWith('http://localhost:3001/todo/delete', {
       headers: { 'Content-Type': 'application/json' },
       method: 'DELETE',
       body: JSON.stringify(todo),
@@ -93,7 +93,7 @@ describe('Verifica se as funções fetch são chamadas', () => {
 
     updateTodo(todo, testFunc);
     expect(global.fetch).toBeCalledTimes(1);
-    expect(global.fetch).toBeCalledWith('http://localhost:3000/todo/update', {
+    expect(global.fetch).toBeCalledWith('http://localhost:3001/todo/update', {
       headers: { 'Content-Type': 'application/json' },
       method: 'PUT',
       body: JSON.stringify(todo),
