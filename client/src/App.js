@@ -101,7 +101,16 @@ function App() {
           </div>
         ))}
       </div>
-      <Form getTodos={ setTodosFromAPI } />
+      <div
+        className="container white z-depth-1"
+        style={ { position: 'fixed',
+          bottom: '0',
+          zIndex: '1',
+        } }
+      >
+        <Form getTodos={ setTodosFromAPI } />
+      </div>
+
     </div>
   );
 }
