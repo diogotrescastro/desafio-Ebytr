@@ -116,12 +116,12 @@ Para executar os testes localmente, a partir da pasta raiz `desafio-Ebytr` execu
 
 2. Para rodar os testes do cliente:
 
-   - Entre na pasta do cliente
+  - Entre na pasta do cliente
 
-   - `cd client`
+  - `cd client`
 
-   - Execute o comando
+  - Execute o comando
 
-   - `npm test`
+  - `npm test`
 
-   - Será mostrado o resultado de todos os testes e relatório de cobertura
+  - Será mostrado o resultado de todos os testes e relatório de cobertura
