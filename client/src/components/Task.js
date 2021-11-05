@@ -1,11 +1,30 @@
-import { useState } from 'react';
+/* eslint-disable react/jsx-no-bind */
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { updateTodo, deleteTodo } from '../services/todoAPI';
+import SelectStatus from './SelectStatus';
+import ButtonsEdit from './ButtonsEdit';
 
 function Task({ task, getTodos }) {
   const [editTask, setEditTask] = useState(task);
   const [validateInput, setvalidateInput] = useState(false);
+  const [statusNew, setStatusNew] = useState('');
   const { title, status, edit } = task;
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function generateStatus() {
+    if (status === 'pending') {
+      setStatusNew('pendente');
+    } if (status === 'progress') {
+      setStatusNew('em andamento');
+    } if (status === 'completed') {
+      return setStatusNew('concluida');
+    }
+  }
+
+  useEffect(() => {
+    generateStatus();
+  }, [generateStatus]);
 
   function handleEdit() {
     const tempItem = { ...task, status: editTask.status, edit: true };
@@ -34,65 +53,65 @@ function Task({ task, getTodos }) {
 
   function generateEditable() {
     return (
-      <form onSubmit={ onSubmit } data-testid="form-todo-editable">
-        <input
-          type="text"
-          name="title"
-          value={ editTask.title }
-          onChange={ onChange }
-          data-testid="input-todo-text"
-        />
-        <select
-          name="status"
-          onChange={ onChange }
-          value={ editTask.status }
-          data-testid="select-text"
-        >
-          <option value="pending" data-testid="select-option-pending">
-            Pendente
-          </option>
-          <option value="progress" data-testid="select-option-progress">
-            Em Andamento
-          </option>
-          <option value="completed" data-testid="select-option-completed">
-            Concluída
-          </option>
-        </select>
-        <button
-          type="button"
-          data-testid="btn-todo-delete"
-          onClick={ handleDelete }
-        >
-          x
-        </button>
-        <button type="submit" data-testid="btn-todo-submit">
-          Atualizar
-        </button>
-        {validateInput && editTask.title === '' ? (
-          <span className="empty-title">O campo não pode ser vazio</span>
-        ) : (
-          ''
-        )}
-      </form>
+      <div className="row">
+        <form onSubmit={ onSubmit } data-testid="form-todo-editable" className="col s12">
+          <div className="row">
+            <div className="input-field col s6">
+              <input
+                type="text"
+                name="title"
+                value={ editTask.title }
+                onChange={ onChange }
+                data-testid="input-todo-text"
+                id="insertTitleUpdate"
+              />
+              <label htmlFor="insertTitleUpdate">
+                {validateInput && newTask.title === '' ? (
+                  <span className="empty-title">O campo não pode ser vazio</span>
+                ) : (
+                  ''
+                )}
+
+              </label>
+            </div>
+            <SelectStatus change={ onChange } value={ editTask.status } />
+            <ButtonsEdit handleDelete={ handleDelete } />
+          </div>
+          {validateInput && editTask.title === '' ? (
+            <span className="empty-title">O campo não pode ser vazio</span>
+          ) : (
+            ''
+          )}
+        </form>
+      </div>
     );
   }
 
   function generateTasks() {
     return (
-      <>
-        <span data-testid="task-title">{title}</span>
-        <span data-testid="task-status">{` - ${status}`}</span>
-        <span>
-          {' '}
+      <div className="row">
+        <div className="divider" />
+        <span
+          data-testid="task-title"
+          style={ { fontSize: '18px', lineHeight: '32px' } }
+        >
+          {title}
+
+        </span>
+        <div className="right">
+          <div className="chip">
+            { statusNew }
+          </div>
           <button
             type="button"
             data-testid="task-btn-edit"
             onClick={ () => handleEdit() }
+            className="btn-floating btn-small waves-effect waves-light"
           >
-            editar
+            <i className="material-icons">create</i>
           </button>
-        </span>
-      </>
+        </div>
+      </div>
     );
   }
 

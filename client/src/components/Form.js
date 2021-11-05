@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-no-bind */
 import { useState } from 'react';
 import { addTodo } from '../services/todoAPI';
+import SelectStatus from './SelectStatus';
 
 const initialTask = {
   title: '',
@@ -28,34 +30,42 @@ function Form({ getTodos }) {
 
   function generateForm() {
     return (
-      <form onSubmit={ onSubmit } data-testid="form-input">
-        <input
-          type="text"
-          name="title"
-          value={ newTask.title }
-          onChange={ onChange }
-          data-testid="form-input-text"
-        />
-        <select name="status" onChange={ onChange } data-testid="form-select">
-          <option value="pending" data-testid="form-option-pending">
-            Pendente
-          </option>
-          <option value="progress" data-testid="form-option-progress">
-            Em Andamento
-          </option>
-          <option value="completed" data-testid="form-option-completed">
-            Concluída
-          </option>
-        </select>
-        <button type="submit" data-testid="btn-task-add">
-          Criar
-        </button>
-        {validateInput && newTask.title === '' ? (
-          <span className="empty-title">O campo não pode ser vazio</span>
-        ) : (
-          ''
-        )}
-      </form>
+      <div className="row">
+        <form onSubmit={ onSubmit } data-testid="form-input" className="col s12">
+          <div className="row">
+            <div className="input-field col s6">
+              <input
+                type="text"
+                name="title"
+                value={ newTask.title }
+                onChange={ onChange }
+                data-testid="form-input-text"
+                className="validate"
+                id="insertTitle"
+              />
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+              <label htmlFor="insertTitle">
+                {validateInput && newTask.title === '' ? (
+                  <span className="empty-title">O campo não pode ser vazio</span>
+                ) : (
+                  'Insira sua Tarefa'
+                )}
+
+              </label>
+            </div>
+            <SelectStatus change={ onChange } />
+            <div className="input-field col s2">
+              <button
+                type="submit"
+                data-testid="btn-task-add"
+                className="waves-effect waves-light btn-small"
+              >
+                Criar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     );
   }
   return <div className="task">{generateForm()}</div>;
