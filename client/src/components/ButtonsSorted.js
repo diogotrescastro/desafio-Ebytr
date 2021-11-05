@@ -20,13 +20,14 @@ function ButtonsSorted({
       className="row l2 s2 right right-align"
       style={ { marginRight: 'unset' } }
     >
-      <aauto
+      <a
+        className="dropdown-trigger btn grey"
         href="#menu"
         data-target="dropdown1"
       >
         <i className="material-icons">filter_list</i>
 
-      </aauto>
+      </a>
       <ul id="dropdown1" className="dropdown-content sorted">
         <li>
           <button
