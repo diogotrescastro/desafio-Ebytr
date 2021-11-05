@@ -6,6 +6,7 @@ import { getTodos } from './services/todoAPI';
 import Form from './components/Form';
 import Task from './components/Task';
 import ButtonsSorted from './components/ButtonsSorted';
+import ButtonsFilters from './components/ButtonsFilters';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -73,41 +74,7 @@ function App() {
   return (
     <div className="App">
       <h1> Lista de Tarefas </h1>
-      <div className="filters">
-        <span>Status</span>
-        <button
-          type="button"
-          data-testid="btn-tasks-all"
-          onClick={ () => setFilter() }
-          className="waves-effect waves-light btn-small"
-        >
-          Todas Tarefas
-        </button>
-        <button
-          type="button"
-          data-testid="btn-tasks-pending"
-          onClick={ () => setFilter('pending') }
-          className="waves-effect waves-light btn-small"
-        >
-          Pendentes
-        </button>
-        <button
-          type="button"
-          data-testid="btn-tasks-progress"
-          onClick={ () => setFilter('progress') }
-          className="waves-effect waves-light btn-small"
-        >
-          Em Andamento
-        </button>
-        <button
-          type="button"
-          data-testid="btn-tasks-completed"
-          onClick={ () => setFilter('completed') }
-          className="waves-effect waves-light btn-small"
-        >
-          Concluídas
-        </button>
-      </div>
+      <ButtonsFilters setFilter={ setFilter } />
       <ButtonsSorted
         setTodosFromAPI={ setTodosFromAPI }
         setTodosSortRecents={ setTodosSortRecents }
