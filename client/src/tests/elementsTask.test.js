@@ -3,7 +3,7 @@ import Task from '../components/Task';
 
 describe('Verifica os elementos do Task', () => {
   describe('Ao ser renderizada com tarefa fora do modo de edição', () => {
-    test('testa se existe um campo de titulo da tarefa com o data-testid "task-title"', () => {
+    test('testa se existe o campo titulo a com o data-testid "task-title"', () => {
       const todo = {
         _id: '6183f14edd3c0fb70d50566e',
         title: 'teste',
@@ -20,7 +20,7 @@ describe('Verifica os elementos do Task', () => {
       expect(title).toBeInTheDocument();
       expect(title).toHaveTextContent('teste');
     });
-    test('testa se existe um campo de status da tarefa com o data-testid "task-status"', () => {
+    test('testa se existe o campo status com o data-testid "task-status"', () => {
       const todo = {
         _id: '6183f14edd3c0fb70d50566e',
         title: 'teste',
@@ -35,7 +35,7 @@ describe('Verifica os elementos do Task', () => {
 
       const status = getByTestId('task-status');
       expect(status).toBeInTheDocument();
-      expect(status).toHaveTextContent('pending');
+      expect(status).toHaveTextContent('pendente');
     });
     test('testa se existe um botão com o data-testid "task-btn-edit"', () => {
       const todo = {
@@ -74,7 +74,7 @@ describe('Verifica os elementos do Task', () => {
       expect(form).toBeInTheDocument();
     });
 
-    test('testa se existe um input com (valor igual ao titulo anterior a edição) da tarefa com o data-testid "task-title"', () => {
+    test('testa se existe um input com o titulo com data-testid "task-title"', () => {
       const todo = {
         _id: '6183f14edd3c0fb70d50566e',
         title: 'teste',
@@ -104,7 +104,7 @@ describe('Verifica os elementos do Task', () => {
 
       const { getByTestId } = render(<Task task={ todo } getTodos={ test } />);
 
-      const select = getByTestId('select-text');
+      const select = getByTestId('form-select');
       expect(select).toBeInTheDocument();
       expect(select.value).toBe('pending');
     });
@@ -122,7 +122,7 @@ describe('Verifica os elementos do Task', () => {
 
       const { getByTestId } = render(<Task task={ todo } getTodos={ test } />);
 
-      const optionPending = getByTestId('select-option-pending');
+      const optionPending = getByTestId('form-option-pending');
       expect(optionPending).toBeInTheDocument();
       expect(optionPending.value).toBe('pending');
     });
@@ -139,7 +139,7 @@ describe('Verifica os elementos do Task', () => {
 
       const { getByTestId } = render(<Task task={ todo } getTodos={ test } />);
 
-      const optionProgress = getByTestId('select-option-progress');
+      const optionProgress = getByTestId('form-option-progress');
       expect(optionProgress).toBeInTheDocument();
       expect(optionProgress.value).toBe('progress');
     });
@@ -156,7 +156,7 @@ describe('Verifica os elementos do Task', () => {
 
       const { getByTestId } = render(<Task task={ todo } getTodos={ test } />);
 
-      const optionCompleted = getByTestId('select-option-completed');
+      const optionCompleted = getByTestId('form-option-completed');
       expect(optionCompleted).toBeInTheDocument();
       expect(optionCompleted.value).toBe('completed');
     });

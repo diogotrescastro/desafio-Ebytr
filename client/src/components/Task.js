@@ -98,7 +98,7 @@ function Task({ task, getTodos }) {
           {title}
 
         </span>
-        <div className="right">
+        <div className="right" data-testid="task-status">
           <div className="chip">
             { statusNew }
           </div>
