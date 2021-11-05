@@ -83,7 +83,7 @@ function App() {
       </div>
 
       <div
-        style={ { display: 'flex' } }
+        style={ { display: 'flex', alignItems: 'center' } }
         className="row l12 s12"
       >
         <ButtonsFilters setFilter={ setFilter } />
