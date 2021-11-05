@@ -95,8 +95,7 @@ Este projeto usa o  [ESLint](https://eslint.org/) para fazer a análise estátic
 
 Este projeto já vem com as dependências relacionadas ao _linter_ configuradas no arquivos `package.json`.
 
-Para executar voc
-e deve instalar o plugin do `ESLint` no `VSCode`, bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+Para executar você deve instalar o plugin do `ESLint` no `VSCode`, bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
 
 ## Testes
