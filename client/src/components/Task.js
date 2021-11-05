@@ -90,7 +90,7 @@ function Task({ task, getTodos }) {
   function generateTasks() {
     return (
       <div className="row">
-        <div className="divider" />
+        <div className="divider" style={ { marginBottom: '25px' } } />
         <span
           data-testid="task-title"
           style={ { fontSize: '18px', lineHeight: '32px' } }
