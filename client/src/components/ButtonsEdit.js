@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 function ButtonsEdit({ handleDelete }) {
   return (
-    <div>
-      <div className="input-field col s1">
+    <div className="center">
+      <div className="input-field col l1 s2">
         <button
           type="button"
           data-testid="btn-todo-delete"
@@ -13,7 +13,7 @@ function ButtonsEdit({ handleDelete }) {
           <i className="material-icons">delete_forever</i>
         </button>
       </div>
-      <div className="input-field col s1">
+      <div className="input-field col l1 s2">
         <button
           type="submit"
           data-testid="btn-todo-submit"

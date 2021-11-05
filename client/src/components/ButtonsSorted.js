@@ -16,15 +16,17 @@ function ButtonsSorted({
     padding: '14px 16px',
   };
   return (
-    <>
-      <a
-        className="dropdown-trigger btn grey"
+    <div
+      className="row l2 s2 right right-align"
+      style={ { marginRight: 'unset' } }
+    >
+      <aauto
         href="#menu"
         data-target="dropdown1"
       >
         <i className="material-icons">filter_list</i>
 
-      </a>
+      </aauto>
       <ul id="dropdown1" className="dropdown-content sorted">
         <li>
           <button
@@ -79,7 +81,7 @@ function ButtonsSorted({
         </li>
 
       </ul>
-    </>
+    </div>
   );
 }
 

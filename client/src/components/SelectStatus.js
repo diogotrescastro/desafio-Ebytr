@@ -11,7 +11,7 @@ function SelectStatus({ change, value }) {
   }, []);
 
   return (
-    <div className="input-field col s4">
+    <div className="input-field col l4 s6">
       <select
         name="status"
         onChange={ change }
