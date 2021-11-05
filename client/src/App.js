@@ -75,7 +75,7 @@ function App() {
     <div className="App container">
       <div className="row valign-wrapper center-align">
         <div className="col s6">
-          <h1 className="teal-text text-lighten-1"> Ebtry </h1>
+          <h1 className="teal-text text-lighten-1"> Ebytr </h1>
         </div>
         <div className="col s6">
           <h4 className="grey-text text-lighten-1"> Lista de Tarefas </h4>
