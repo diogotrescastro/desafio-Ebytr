@@ -17,7 +17,6 @@ function ButtonsSorted({
 
       </a>
       <ul id="dropdown1" className="dropdown-content sorted">
-        <span>Ordenação</span>
         <li>
           <button
             type="button"
@@ -25,9 +24,10 @@ function ButtonsSorted({
             onClick={ () => setTodosFromAPI() }
             className="waves-effect waves-light btn-small"
           >
-            Data Descrescente
+            Data D
           </button>
         </li>
+        <li className="divider" />
         <li>
           <button
             type="button"
@@ -35,9 +35,10 @@ function ButtonsSorted({
             onClick={ () => setTodosSortRecents() }
             className="waves-effect waves-light btn-small"
           >
-            Data Crescente
+            Data C
           </button>
         </li>
+        <li className="divider" />
         <li>
           <button
             type="button"
@@ -48,6 +49,7 @@ function ButtonsSorted({
             A-Z
           </button>
         </li>
+        <li className="divider" />
         <li>
           <button
             type="button"

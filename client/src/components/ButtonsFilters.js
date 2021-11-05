@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 function ButtonsFilters({ setFilter }) {
   return (
     <div className="filters">
-      <span>Status</span>
       <button
         type="button"
         data-testid="btn-tasks-all"
